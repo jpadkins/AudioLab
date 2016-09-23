@@ -74,6 +74,10 @@
         [weakSelf.buffer addNewFloatData:data withNumSamples:numFrames];
     }];
     
+    [self.audioManager setOutputBlock:^(float *data, UInt32 numFrames, UInt32 numChannels){
+        [weakSelf.buffer fetchInterleavedData: 	data withNumSamples:numFrames];
+    }];
+
     [self.audioManager play];
 }
 
